@@ -13,11 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    private TimeAdp adapter;
     private TextView showtime;
     private Button mstart;
     private Timer mtimer;
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         gotohistory = findViewById(R.id.uoahistory);
         Onclick onclick = new Onclick();
         gotohistory.setOnClickListener(onclick);
+        timelist = new ArrayList<>();
+        adapter = new TimeAdp(getApplicationContext(), timelist);
     }
 
     class Onclick implements View.OnClickListener{
@@ -121,8 +126,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this,getshowtime()+" has been added to history",Toast.LENGTH_SHORT).show();
         TimerModel timerModel = new TimerModel(getshowtime(),mtime);
         timelist.add(timerModel);
-
-
+        savehistory.writeListInPref(getApplicationContext(), timelist);
+        Collections.reverse(timelist);
+        adapter.setTaskModelList(timelist);
     }
 
     public void studystart(View view)

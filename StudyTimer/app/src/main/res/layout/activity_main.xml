@@ -91,24 +91,13 @@
         android:textSize="30sp"
         android:layout_below="@+id/daytext"
         />
-    <TextView
-        android:id="@+id/weektext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Average study time per week"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:layout_below="@+id/perday"
-        />
-    <TextView
-        android:id="@+id/perweek"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00 : 00 : 00"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:layout_below="@+id/weektext"
-        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/perday" />
 
 
 </RelativeLayout>
