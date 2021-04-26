@@ -11,6 +11,7 @@
     android:textAllCaps="false"
     android:gravity="center"
     android:textSize="20sp"
+    android:textColor="@color/blue"
     />
 
 

@@ -74,7 +74,7 @@
         android:layout_below="@+id/uoatitle"
         />
     <TextView
-        android:id="@+id/perday"
+        android:id="@+id/daytext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Average study time per day"
@@ -83,13 +83,31 @@
         android:layout_below="@+id/uoahistory"
         />
     <TextView
-        android:id="@+id/perweek"
+        android:id="@+id/perday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 : 00 : 00"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_below="@+id/daytext"
+        />
+    <TextView
+        android:id="@+id/weektext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Average study time per week"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:layout_below="@+id/perday"
+        />
+    <TextView
+        android:id="@+id/perweek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 : 00 : 00"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_below="@+id/weektext"
         />
 
 
