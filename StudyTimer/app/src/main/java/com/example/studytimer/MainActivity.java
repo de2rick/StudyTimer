@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TimerTask mtimerTask;
     private Double mtime = 0.0;
     private boolean isstart = false;
+    private Button gotohistory;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,6 +31,23 @@ public class MainActivity extends AppCompatActivity {
         showtime = findViewById(R.id.uoaclock);
         mstart = findViewById(R.id.uoastart);
         mtimer = new Timer();
+        gotohistory = findViewById(R.id.uoahistory);
+
+        Onclick onclick = new Onclick();
+        gotohistory.setOnClickListener(onclick);
+    }
+
+    class Onclick implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            Intent intent = null;
+            switch (v.getId()){
+                case R.id.uoahistory:
+                    intent = new Intent(MainActivity.this, History.class);
+                    break;
+            }
+            startActivity(intent);
+        }
     }
 
     public void studyreset(View view)
