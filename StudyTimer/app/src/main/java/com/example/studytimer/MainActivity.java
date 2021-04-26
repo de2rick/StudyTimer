@@ -60,9 +60,38 @@ public class MainActivity extends AppCompatActivity {
             {
             }
         });
-
         resetAlert.show();
+    }
 
+    public void setnewday(View view) {
+        AlertDialog.Builder newdayAlert = new AlertDialog.Builder(this);
+        newdayAlert.setTitle("Set a new day");
+        newdayAlert.setMessage("Are you sure you want to set a new day?\n Today’s study time will be recorded.");
+        newdayAlert.setPositiveButton("New Day", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                if(mtimerTask != null)
+                {
+                    mtimerTask.cancel();
+                    mstart.setText("START");
+                    mstart.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.green));
+                    mtime = 0.0;
+                    isstart = false;
+                    showtime.setText("00 : 00 : 00");
+                }
+            }
+        });
+
+        newdayAlert.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+            }
+        });
+        newdayAlert.show();
     }
 
     public void studystart(View view)
@@ -113,5 +142,6 @@ public class MainActivity extends AppCompatActivity {
         String output = String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
         return output;
     }
+
 
 }
