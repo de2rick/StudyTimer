@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         mstart = findViewById(R.id.uoastart);
         mtimer = new Timer();
         gotohistory = findViewById(R.id.uoahistory);
-
         Onclick onclick = new Onclick();
         gotohistory.setOnClickListener(onclick);
     }
