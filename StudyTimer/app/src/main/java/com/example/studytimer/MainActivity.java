@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.sql.Time;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private Double mtime = 0.0;
     private boolean isstart = false;
     private Button gotohistory;
+    private List<TimerModel> timelist;
+
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 if(mtimerTask != null)
                 {
+                    addhistory();
                     mtimerTask.cancel();
                     mstart.setText("START");
                     mstart.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.green));
@@ -109,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         newdayAlert.show();
+    }
+
+    private void addhistory() {
+        Toast.makeText(MainActivity.this,getshowtime()+" has been added to history",Toast.LENGTH_SHORT).show();
+        TimerModel timerModel = new TimerModel(getshowtime(),mtime);
+        timelist.add(timerModel);
+
+
     }
 
     public void studystart(View view)
