@@ -2,11 +2,14 @@ package com.example.studytimer;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,6 +46,31 @@ public class MainActivity extends AppCompatActivity {
         gotohistory.setOnClickListener(onclick);
         timelist = new ArrayList<>();
         adapter = new TimeAdp(getApplicationContext(), timelist);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     class Onclick implements View.OnClickListener{
@@ -136,14 +164,14 @@ public class MainActivity extends AppCompatActivity {
         if(isstart)
         {
             isstart = false;
-            mstart.setText("START");
+            mstart.setText("CONTINUE");
             mstart.setTextColor(ContextCompat.getColor(this, R.color.green));
             mtimerTask.cancel();
         }
         else
         {
             isstart = true;
-            mstart.setText("STOP");
+            mstart.setText("PAUSE");
             mstart.setTextColor(ContextCompat.getColor(this, R.color.red));
             startTimer();
         }

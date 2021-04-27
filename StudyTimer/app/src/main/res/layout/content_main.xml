@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/uoatitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Your study time for today is"
+
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/uoagroup"
+            android:layout_below="@+id/uoaclock"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/uoareset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:text="RESET"
+                android:background="@null"
+                android:textSize="20sp"
+                android:layout_below="@+id/uoaclock"
+                android:onClick="studyreset"
+                />
+
+            <Button
+                android:id="@+id/uoastart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="START"
+
+                android:layout_toRightOf="@+id/uoareset"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:onClick="studystart"
+                />
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/newday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Save The Slot"
+            android:layout_below="@+id/uoagroup"
+            android:textColor="@color/orange"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            android:onClick="setnewday"
+            />
+
+        <Button style="@style/colorButton"
+            android:id="@+id/uoahistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Show History"
+            android:layout_below="@+id/newday"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            />
+
+        <TextView
+            android:id="@+id/uoaclock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="00 : 00 : 00"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="60sp"
+            android:layout_below="@+id/uoatitle"
+            />
+        <TextView
+            android:id="@+id/daytext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average study time per day"
+
+            android:textSize="20sp"
+            android:layout_below="@+id/uoahistory"
+            />
+        <TextView
+            android:id="@+id/perday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00 : 00 : 00"
+            android:textSize="25sp"
+            android:layout_below="@+id/daytext"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/perday" />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

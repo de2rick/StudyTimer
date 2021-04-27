@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Study Timer</string>
+    <string name="action_settings">Setting</string>
+    <string name="title_activity_main">Study Timer</string>
+    <string name="title_activity_history">History</string>
+    <string name="action_about">About</string>
 </resources>
