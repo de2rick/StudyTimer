@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         showtime = findViewById(R.id.uoaclock);
         mstart = findViewById(R.id.uoastart);
         mtimer = new Timer();
-        gotohistory = findViewById(R.id.uoahistory);
+/*        gotohistory = findViewById(R.id.uoahistory);
         Onclick onclick = new Onclick();
-        gotohistory.setOnClickListener(onclick);
+        gotohistory.setOnClickListener(onclick);*/
         timelist = new ArrayList<>();
         adapter = new TimeAdp(getApplicationContext(), timelist);
 
@@ -64,23 +64,31 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Intent intent;
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
+        if (id == R.id.action_history) {
+            intent = new Intent(MainActivity.this, History.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_about) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
 
     class Onclick implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             Intent intent = null;
             switch (v.getId()){
-                case R.id.uoahistory:
+                /*case R.id.uoahistory:
                     intent = new Intent(MainActivity.this, History.class);
-                    break;
+                    break;*/
             }
             startActivity(intent);
         }
