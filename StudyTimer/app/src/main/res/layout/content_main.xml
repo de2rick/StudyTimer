@@ -98,7 +98,7 @@
             android:id="@+id/daytext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Average study time per day"
+            android:text="You total study time today"
 
             android:textSize="20sp"
             android:layout_below="@+id/newday"

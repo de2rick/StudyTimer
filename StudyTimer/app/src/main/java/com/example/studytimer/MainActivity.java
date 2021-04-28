@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.studytimer.ui.preferencescreen.PreferenceScreenFragment;
+
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            intent = new Intent(MainActivity.this, PreferenceScreen.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.action_history) {
