@@ -4,9 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -30,14 +34,15 @@ public class MainActivity extends AppCompatActivity {
     private TimeAdp adapter;
     private TextView showtime;
     private TextView perday;
+    private TextView mtitle;
     private Button mstart;
     private Timer mtimer;
     private TimerTask mtimerTask;
     private Double mtime = 0.0;
-    private Double ttime = 0.0;
     private boolean isstart = false;
     //private Button gotohistory;
     private List<TimerModel> timelist;
+    private Double ttime = 0.0;
 
 
     protected void onCreate(Bundle savedInstanceState)
@@ -47,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
         showtime = findViewById(R.id.uoaclock);
         perday = findViewById(R.id.perday);
         mstart = findViewById(R.id.uoastart);
+        mtitle = findViewById(R.id.uoatitle);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String value = preferences.getString("prefer_name", " null");
+        mtitle.setText("Hi " + value + ", you have studied: ");
         mtimer = new Timer();
+
 /*        gotohistory = findViewById(R.id.uoahistory);
         Onclick onclick = new Onclick();
         gotohistory.setOnClickListener(onclick);*/
@@ -84,12 +94,33 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_about) {
+
+
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    public void onResume() {
 
+        super.onResume();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String value = preferences.getString("prefer_name", " null");
+        mtitle.setText("Hi " + value + ", you have studied: ");
+
+    }
+
+    public void onPause() {
+
+        super.onPause();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(preferences.getBoolean("prefer_focus", false) && isstart){
+            isstart = false;
+            mstart.setText("CONTINUE");
+            mstart.setTextColor(ContextCompat.getColor(this, R.color.green));
+            mtimerTask.cancel();
+        }
+    }
     /*class Onclick implements View.OnClickListener{
         @Override
         public void onClick(View v) {
@@ -102,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }*/
-
     public void studyreset(View view)
     {
         AlertDialog.Builder resetAlert = new AlertDialog.Builder(this);
@@ -155,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                     if(mtimerTask != null)
                     {
                         addhistory();
+                        ttime += mtime;
                         if (ttime>=60) perday.setText(getwordtime(ttime));
                         mtimerTask.cancel();
                         mstart.setText("START");

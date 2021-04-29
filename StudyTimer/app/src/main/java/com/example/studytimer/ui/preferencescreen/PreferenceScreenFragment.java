@@ -11,14 +11,19 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.studytimer.MainActivity;
 import com.example.studytimer.R;
 
-public class PreferenceScreenFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+import org.w3c.dom.Text;
 
+public class PreferenceScreenFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+    TextView tv;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -29,7 +34,7 @@ public class PreferenceScreenFragment extends PreferenceFragmentCompat implement
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals("prefer_name")){
             Preference connectionPref = findPreference(key);
-                connectionPref.setSummary(sharedPreferences.getString(key,"Set up welcome name"));
+            connectionPref.setSummary(sharedPreferences.getString(key,"Set up welcome name"));
         }
     }
 
