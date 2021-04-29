@@ -99,18 +99,19 @@
             android:id="@+id/daytext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You total study time today"
-            android:layout_margin="20dp"
-            android:textSize="20sp"
+            android:text="You total study time today:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="25sp"
             android:layout_below="@+id/newday"
             />
         <TextView
             android:id="@+id/perday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00 : 00 : 00"
+            android:text="Less than 1 minute"
             android:layout_marginLeft="20dp"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_below="@+id/daytext"
             />
 

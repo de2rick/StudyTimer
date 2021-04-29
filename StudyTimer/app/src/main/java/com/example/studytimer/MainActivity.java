@@ -29,10 +29,12 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     private TimeAdp adapter;
     private TextView showtime;
+    private TextView perday;
     private Button mstart;
     private Timer mtimer;
     private TimerTask mtimerTask;
     private Double mtime = 0.0;
+    private Double ttime = 0.0;
     private boolean isstart = false;
     //private Button gotohistory;
     private List<TimerModel> timelist;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showtime = findViewById(R.id.uoaclock);
+        perday = findViewById(R.id.perday);
         mstart = findViewById(R.id.uoastart);
         mtimer = new Timer();
 /*        gotohistory = findViewById(R.id.uoahistory);
@@ -152,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     if(mtimerTask != null)
                     {
                         addhistory();
+                        if (ttime>=60) perday.setText(getwordtime(ttime));
                         mtimerTask.cancel();
                         mstart.setText("START");
                         mstart.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.green));
@@ -258,6 +262,17 @@ public class MainActivity extends AppCompatActivity {
         String output = String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
         return output;
     }
-
+    private String getwordtime(double time)
+    {
+        int rounded = (int) Math.round(time);
+        int minutes = ((rounded % 86400) % 3600) / 60;
+        int hours = ((rounded % 86400) / 3600);
+        String h = " Hour ";
+        if (hours > 1) h = " Hours ";
+        String m = " Minute ";
+        if (minutes > 1) m = " Minutes ";
+        String output = hours + h + minutes + m;
+        return output;
+    }
 
 }
