@@ -8,10 +8,12 @@ import androidx.core.content.ContextCompat;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TimerTask mtimerTask;
     private Double mtime = 0.0;
     private boolean isstart = false;
-    private Button gotohistory;
+    //private Button gotohistory;
     private List<TimerModel> timelist;
 
 
@@ -85,18 +87,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    class Onclick implements View.OnClickListener{
+    /*class Onclick implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             Intent intent = null;
             switch (v.getId()){
-                /*case R.id.uoahistory:
+                case R.id.uoahistory:
                     intent = new Intent(MainActivity.this, History.class);
-                    break;*/
+                    break;
             }
             startActivity(intent);
         }
-    }
+    }*/
 
     public void studyreset(View view)
     {
@@ -132,9 +134,46 @@ public class MainActivity extends AppCompatActivity {
 
     public void setnewday(View view) {
         AlertDialog.Builder newdayAlert = new AlertDialog.Builder(this);
-        newdayAlert.setTitle("Set a new day");
-        newdayAlert.setMessage("Are you sure you want to set a new day?\n Today’s study time will be recorded.");
-        newdayAlert.setPositiveButton("New Day", new DialogInterface.OnClickListener()
+        final AlertDialog dialog = newdayAlert.create();
+        View dialogView = View.inflate(this, R.layout.save_slot_dialog, null);
+        dialog.setView(dialogView);
+        dialog.show();
+        final EditText etName = dialogView.findViewById(R.id.et_name);
+        Button btnLogin =dialogView.findViewById(R.id.btn_save);
+        Button btnCancel =dialogView.findViewById(R.id.btn_cancel);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String slotName = etName.getText().toString();
+                if (TextUtils.isEmpty(slotName)) {
+                    Toast.makeText(MainActivity.this, "Please enter your slot name", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    if(mtimerTask != null)
+                    {
+                        addhistory();
+                        mtimerTask.cancel();
+                        mstart.setText("START");
+                        mstart.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.green));
+                        mtime = 0.0;
+                        isstart = false;
+                        showtime.setText("00 : 00 : 00");
+                        dialog.dismiss();
+                    }
+                }
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        /*AlertDialog.Builder newdayAlert = new AlertDialog.Builder(this);
+        newdayAlert.setTitle("Save your slot");
+        newdayAlert.setMessage("Are you sure you want to stop slot?\nToday's study time will be recorded.");
+        newdayAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener()
         {
             @Override
             public void onClick(DialogInterface dialogInterface, int i)
@@ -159,12 +198,12 @@ public class MainActivity extends AppCompatActivity {
             {
             }
         });
-        newdayAlert.show();
+        newdayAlert.show();*/
     }
 
     private void addhistory() {
-        Toast.makeText(MainActivity.this,getshowtime()+" has been added to history",Toast.LENGTH_SHORT).show();
-        TimerModel timerModel = new TimerModel(getshowtime(),mtime);
+        Toast.makeText(MainActivity.this,getshowtime(mtime)+" has been added to history",Toast.LENGTH_SHORT).show();
+        TimerModel timerModel = new TimerModel(getshowtime(mtime),mtime);
         timelist.add(timerModel);
         savehistory.writeListInPref(getApplicationContext(), timelist);
         Collections.reverse(timelist);
@@ -202,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run()
                     {
                         mtime++;
-                        showtime.setText(getshowtime());
+                        showtime.setText(getshowtime(mtime));
                     }
                 });
             }
@@ -210,9 +249,9 @@ public class MainActivity extends AppCompatActivity {
         mtimer.scheduleAtFixedRate(mtimerTask, 0 ,1000);
     }
     
-    private String getshowtime()
+    private String getshowtime(double time)
     {
-        int rounded = (int) Math.round(mtime);
+        int rounded = (int) Math.round(time);
         int seconds = ((rounded % 86400) % 3600) % 60;
         int minutes = ((rounded % 86400) % 3600) / 60;
         int hours = ((rounded % 86400) / 3600);

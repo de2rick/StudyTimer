@@ -9,7 +9,7 @@
             android:key="prefer_name"
             android:title="Name"
             android:summary="Set up welcome name"
-            android:defaultValue="COMPSCI 702 Student"
+            android:defaultValue="COMPSCI702 Student"
             android:dialogMessage="Set up your prefer name"
             >
 
