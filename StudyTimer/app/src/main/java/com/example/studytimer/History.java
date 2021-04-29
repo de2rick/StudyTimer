@@ -31,11 +31,6 @@ public class History extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-
-
-
-
-
 /*
         recyclerView = findViewById(R.id.recyclerview);
 
