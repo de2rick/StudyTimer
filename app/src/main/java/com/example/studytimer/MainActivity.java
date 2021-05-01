@@ -64,9 +64,11 @@ public class MainActivity extends AppCompatActivity {
         mtimer = new Timer();
 
 
+
         timelist = savehistory.readListFromPref(this);
         if (timelist == null)
             timelist = new ArrayList<>();
+
 
         adapter = new TimeAdp(getApplicationContext(), timelist);
 
@@ -244,7 +246,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void addhistory() {
         Toast.makeText(MainActivity.this,getshowtime(mtime)+" has been added to history",Toast.LENGTH_SHORT).show();
+
         TimerModel timerModel = new TimerModel(getshowtime(mtime),getDate(),mtime,slotName);
+
         timelist.add(timerModel);
         savehistory.writeListInPref(getApplicationContext(), timelist);
         Collections.reverse(timelist);
