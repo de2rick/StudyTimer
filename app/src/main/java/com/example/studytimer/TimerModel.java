@@ -4,21 +4,23 @@ import java.io.Serializable;
 
 public class TimerModel implements Serializable {
     private String showtime;
-    private double  realtime;
+    private String  realtime;
+    private double second;
 
     public TimerModel() {
     }
 
-    public TimerModel(String showtime, double  taskAddedTime) {
+    public TimerModel(String showtime, String  currenttime, double second) {
         this.showtime = showtime;
-        this.realtime = taskAddedTime;
+        this.realtime = currenttime;
+        this.second = second;
     }
 
     public String getTaskName() {
         return showtime;
     }
 
-    public double getTaskAddedTime() {
+    public String getTaskAddedTime() {
         return realtime;
     }
 }

@@ -24,8 +24,12 @@ import android.widget.Toast;
 import com.example.studytimer.ui.preferencescreen.PreferenceScreenFragment;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,12 +60,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String value = preferences.getString("prefer_name", " null");
         mtitle.setText("Hi " + value + ", you have studied: ");
+
         mtimer = new Timer();
 
 /*        gotohistory = findViewById(R.id.uoahistory);
         Onclick onclick = new Onclick();
         gotohistory.setOnClickListener(onclick);*/
-        timelist = new ArrayList<>();
+
+        timelist = savehistory.readListFromPref(this);
+
+        if (timelist == null)
+            timelist = new ArrayList<>();
+
+
         adapter = new TimeAdp(getApplicationContext(), timelist);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -238,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addhistory() {
         Toast.makeText(MainActivity.this,getshowtime(mtime)+" has been added to history",Toast.LENGTH_SHORT).show();
-        TimerModel timerModel = new TimerModel(getshowtime(mtime),mtime);
+        TimerModel timerModel = new TimerModel(getshowtime(mtime),getDate(),mtime);
         timelist.add(timerModel);
         savehistory.writeListInPref(getApplicationContext(), timelist);
         Collections.reverse(timelist);
@@ -304,6 +315,13 @@ public class MainActivity extends AppCompatActivity {
         if (minutes > 1) m = " Minutes ";
         String output = hours + h + minutes + m;
         return output;
+    }
+
+    private String getDate() {
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        DateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+        return String.valueOf(out.format(date));
     }
 
 }

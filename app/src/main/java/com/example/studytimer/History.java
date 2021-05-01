@@ -29,20 +29,5 @@ public class History extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new TimeAdp(getApplicationContext(), timelist);
         recyclerView.setAdapter(adapter);
-
-
-/*
-        recyclerView = findViewById(R.id.recyclerview);
-
-        timelist = new ArrayList<>();
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        adapter = new TimeAdp(getApplicationContext(), timelist);
-        recyclerView.setAdapter(adapter);
-
- */
-
     }
 }
