@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
     <PreferenceCategory
         android:key="first_category"
         android:title="Personal Information"
@@ -24,6 +24,5 @@
             android:summary="Run the timer only when on the timer page">
 
         </CheckBoxPreference>
-
     </PreferenceCategory>
 </PreferenceScreen>

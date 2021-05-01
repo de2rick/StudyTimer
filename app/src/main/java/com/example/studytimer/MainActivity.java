@@ -24,8 +24,12 @@ import android.widget.Toast;
 import com.example.studytimer.ui.preferencescreen.PreferenceScreenFragment;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -40,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private TimerTask mtimerTask;
     private Double mtime = 0.0;
     private boolean isstart = false;
-    //private Button gotohistory;
     private List<TimerModel> timelist;
     private Double ttime = 0.0;
+    public String slotName;
 
 
     protected void onCreate(Bundle savedInstanceState)
@@ -54,14 +58,16 @@ public class MainActivity extends AppCompatActivity {
         mstart = findViewById(R.id.uoastart);
         mtitle = findViewById(R.id.uoatitle);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String value = preferences.getString("prefer_name", " null");
+        String value = preferences.getString("prefer_name", "Student");
         mtitle.setText("Hi " + value + ", you have studied: ");
+
         mtimer = new Timer();
 
-/*        gotohistory = findViewById(R.id.uoahistory);
-        Onclick onclick = new Onclick();
-        gotohistory.setOnClickListener(onclick);*/
-        timelist = new ArrayList<>();
+
+        timelist = savehistory.readListFromPref(this);
+        if (timelist == null)
+            timelist = new ArrayList<>();
+
         adapter = new TimeAdp(getApplicationContext(), timelist);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -102,16 +108,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onResume() {
-
         super.onResume();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String value = preferences.getString("prefer_name", " null");
         mtitle.setText("Hi " + value + ", you have studied: ");
-
+        timelist = savehistory.readListFromPref(this);
     }
 
     public void onPause() {
-
         super.onPause();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(preferences.getBoolean("prefer_focus", false) && isstart){
@@ -133,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }*/
+
+
     public void studyreset(View view)
     {
         AlertDialog.Builder resetAlert = new AlertDialog.Builder(this);
@@ -177,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String slotName = etName.getText().toString();
+                slotName = etName.getText().toString();
                 if (TextUtils.isEmpty(slotName)) {
                     Toast.makeText(MainActivity.this, "Please enter your slot name", Toast.LENGTH_SHORT).show();
                     return;
@@ -238,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addhistory() {
         Toast.makeText(MainActivity.this,getshowtime(mtime)+" has been added to history",Toast.LENGTH_SHORT).show();
-        TimerModel timerModel = new TimerModel(getshowtime(mtime),mtime);
+        TimerModel timerModel = new TimerModel(getshowtime(mtime),getDate(),mtime,slotName);
         timelist.add(timerModel);
         savehistory.writeListInPref(getApplicationContext(), timelist);
         Collections.reverse(timelist);
@@ -304,6 +310,13 @@ public class MainActivity extends AppCompatActivity {
         if (minutes > 1) m = " Minutes ";
         String output = hours + h + minutes + m;
         return output;
+    }
+
+    private String getDate() {
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        DateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+        return String.valueOf(out.format(date));
     }
 
 }

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,6 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         recyclerView = findViewById(R.id.recyclerview);
 
-
         timelist = savehistory.readListFromPref(this);
 
         if (timelist == null)
@@ -29,20 +30,14 @@ public class History extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new TimeAdp(getApplicationContext(), timelist);
         recyclerView.setAdapter(adapter);
+    }
 
-
-/*
-        recyclerView = findViewById(R.id.recyclerview);
-
+    public void historyreset(View view)
+    {
         timelist = new ArrayList<>();
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        adapter = new TimeAdp(getApplicationContext(), timelist);
-        recyclerView.setAdapter(adapter);
-
- */
+        savehistory.writeListInPref(getApplicationContext(), timelist);
+        //Collections.reverse(timelist);
+        adapter.setTaskModelList(timelist);
 
     }
 }

@@ -35,9 +35,10 @@ public class TimeAdp extends RecyclerView.Adapter<TimeAdp.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        Log.d("Daily", "taskModelList: " + taskModelList);
+        Log.d("sth", "TimerModel: " + taskModelList);
         holder.txtTaskName.setText(taskModelList.get(position).getTaskName());
         holder.txtTaskAddTime.setText(String.valueOf(taskModelList.get(position).getTaskAddedTime()));
+        holder.textSlot.setText(String.valueOf(taskModelList.get(position).getTaskSlotName()));
     }
 
     @Override
@@ -46,11 +47,12 @@ public class TimeAdp extends RecyclerView.Adapter<TimeAdp.Holder> {
     }
 
     public class Holder extends RecyclerView.ViewHolder {
-        TextView txtTaskName, txtTaskAddTime;
+        TextView txtTaskName, txtTaskAddTime, textSlot;
         public Holder(@NonNull View itemView) {
             super(itemView);
             txtTaskName = itemView.findViewById(R.id.txt_task_name);
             txtTaskAddTime = itemView.findViewById(R.id.txt_date);
+            textSlot = itemView.findViewById(R.id.t1);
         }
     }
 }
