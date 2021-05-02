@@ -10,9 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cb0e5b6-1a27-4777-a094-a51e7bbaf245" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2cb0e5b6-1a27-4777-a094-a51e7bbaf245" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +21,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_24" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_4_API_15" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -36,8 +34,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/studytimer/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="304">
               <caret line="114" column="54" lean-forward="true" selection-start-line="114" selection-start-column="54" selection-end-line="114" selection-end-column="54" />
+
             </state>
           </provider>
         </entry>
@@ -45,13 +45,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/studytimer/History.java">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="285">
               <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="54" />
+
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -94,6 +97,7 @@
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
+
         </entry>
       </file>
     </leaf>
@@ -110,6 +114,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/studytimer/TimerModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/studytimer/TimeAdp.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" />
@@ -117,14 +122,17 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_history.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/studytimer/History.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/studytimer/MainActivity.java" />
+
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1938" />
     <option name="height" value="1058" />
+
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -132,8 +140,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+
       <pane id="PackagesPane" />
       <pane id="Scope" />
+
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -150,6 +160,7 @@
             <path>
               <item name="Study Timer" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
@@ -169,28 +180,35 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="menu" type="ddeffd01:AndroidResFolderTypeNode" />
+
             </path>
             <path>
               <item name="Study Timer" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+
               <item name="mipmap" type="ddeffd01:AndroidResFolderTypeNode" />
+
             </path>
             <path>
               <item name="Study Timer" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+
             </path>
             <path>
               <item name="Study Timer" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+
               <item name="xml" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="Study Timer" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+
             </path>
           </expand>
           <select />
@@ -202,7 +220,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="I:/Android/SDK" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/ArrayList-In-SharedPreferences-master" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
@@ -346,6 +364,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -378,6 +397,7 @@
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16766468" />
+
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -394,14 +414,18 @@
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.3289855" />
+
       <window_info anchor="bottom" id="Build" order="9" visible="true" weight="0.16297787" />
+
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Gradle" order="4" />
+
       <window_info anchor="right" id="Preview" order="5" weight="0.3288423" />
     </layout-to-restore>
+
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -411,15 +435,18 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/StudyTimer/app/src/main/java/com/example/studytimer/MainActivity.java" />
     <entry file="file://$PROJECT_DIR$/StudyTimer/app/src/main/res/values/styles.xml" />
+
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml">
+
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/history_border.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
@@ -546,6 +573,7 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+
     </entry>
   </component>
 </project>
