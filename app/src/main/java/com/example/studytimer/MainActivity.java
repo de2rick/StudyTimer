@@ -4,13 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -20,10 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.studytimer.ui.preferencescreen.PreferenceScreenFragment;
-
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -63,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
         mtimer = new Timer();
 
-
         timelist = savehistory.readListFromPref(this);
         if (timelist == null)
             timelist = new ArrayList<>();
+
+
 
         adapter = new TimeAdp(getApplicationContext(), timelist);
 
@@ -110,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String value = preferences.getString("prefer_name", " null");
+        String value = preferences.getString("prefer_name", " Student");
         mtitle.setText("Hi " + value + ", you have studied: ");
-        timelist = savehistory.readListFromPref(this);
+        if (timelist != null) timelist = savehistory.readListFromPref(this);
     }
 
     public void onPause() {
