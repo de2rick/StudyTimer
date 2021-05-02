@@ -8,8 +8,6 @@ public class TimerModel implements Serializable {
     private double second;
     private String slotname;
 
-    public TimerModel() {
-    }
 
     public TimerModel(String showtime, String  currenttime, double second, String slotname) {
         this.showtime = showtime;

@@ -31,8 +31,7 @@ public class savehistory {
 
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<TimerModel>>() {}.getType();
-        List<TimerModel> list = gson.fromJson(jsonString, type);
-        return list;
+        return gson.fromJson(jsonString, type);
     }
 
 }
