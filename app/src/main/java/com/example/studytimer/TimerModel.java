@@ -6,7 +6,9 @@ public class TimerModel implements Serializable {
     private String showtime;
     private String  realtime;
     private double second;
+
     private String slotname;
+
 
 
     public TimerModel(String showtime, String  currenttime, double second, String slotname) {
@@ -14,6 +16,7 @@ public class TimerModel implements Serializable {
         this.realtime = currenttime;
         this.second = second;
         this.slotname = slotname;
+
     }
 
     public String getTaskName() {

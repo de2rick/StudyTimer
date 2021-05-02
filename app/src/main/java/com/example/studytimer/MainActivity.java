@@ -74,9 +74,11 @@ public class MainActivity extends AppCompatActivity {
         int numday = countday.getInt("countday",1);
         aveageday.setText(getshowtime(titletime/numday));
 
+
         timelist = savehistory.readListFromPref(this);
         if (timelist == null)
             timelist = new ArrayList<>();
+
 
         adapter = new TimeAdp(getApplicationContext(), timelist);
 
@@ -260,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addhistory() {
         Toast.makeText(MainActivity.this,getshowtime(mtime)+" has been added to history",Toast.LENGTH_SHORT).show();
+
         TimerModel timerModel = new TimerModel(getshowtime(mtime),getDate(),mtime,slotName);
         if (timelist == null)
             timelist = new ArrayList<>();

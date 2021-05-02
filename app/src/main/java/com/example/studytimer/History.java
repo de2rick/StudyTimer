@@ -32,6 +32,7 @@ public class History extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new TimeAdp(getApplicationContext(), timelist);
         recyclerView.setAdapter(adapter);
+
     }
 
     public void historyreset(View view)
