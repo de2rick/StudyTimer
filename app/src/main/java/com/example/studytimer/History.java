@@ -35,26 +35,25 @@ public class History extends AppCompatActivity {
 
     }
 
-    public void historyreset(View view)
-    {
-        SharedPreferences todaytime,totaltime,countday;
-        todaytime = getSharedPreferences("todaytime",MODE_PRIVATE);
-        totaltime = getSharedPreferences("totaltime",MODE_PRIVATE);
-        countday = getSharedPreferences("countday",MODE_PRIVATE);
+    public void historyreset(View view) {
+        SharedPreferences todaytime, totaltime, countday;
+        todaytime = getSharedPreferences("todaytime", MODE_PRIVATE);
+        totaltime = getSharedPreferences("totaltime", MODE_PRIVATE);
+        countday = getSharedPreferences("countday", MODE_PRIVATE);
 
         int countdayy = 1;
         SharedPreferences.Editor countdayeditor = countday.edit();
-        countdayeditor.putInt("countday",countdayy);
+        countdayeditor.putInt("countday", countdayy);
         countdayeditor.commit();
 
         int totaltimenum = 0;
         SharedPreferences.Editor totaltimeeditor = totaltime.edit();
-        totaltimeeditor.putInt("totaltime",totaltimenum);
+        totaltimeeditor.putInt("totaltime", totaltimenum);
         totaltimeeditor.commit();
 
         int todaytimett = 0;
         SharedPreferences.Editor todayeditor = todaytime.edit();
-        todayeditor.putInt("todaytime",todaytimett);
+        todayeditor.putInt("todaytime", todaytimett);
         todayeditor.commit();
 
         timelist = new ArrayList<>();

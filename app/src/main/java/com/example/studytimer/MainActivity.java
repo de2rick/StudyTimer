@@ -45,13 +45,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean isstart = false;
     private List<TimerModel> timelist;
     public String slotName;
-    private SharedPreferences todaytime,totaltime,currentday,countday;
+    private SharedPreferences todaytime, totaltime, currentday, countday;
     private Context context;
 
 
-
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         setContentView(R.layout.activity_main);
@@ -62,17 +60,17 @@ public class MainActivity extends AppCompatActivity {
         mtitle = findViewById(R.id.uoatitle);
         mtimer = new Timer();
 
-        todaytime = getSharedPreferences("todaytime",MODE_PRIVATE);
-        totaltime = getSharedPreferences("totaltime",MODE_PRIVATE);
-        currentday = getSharedPreferences("currentday",MODE_PRIVATE);
-        countday = getSharedPreferences("countday",MODE_PRIVATE);
+        todaytime = getSharedPreferences("todaytime", MODE_PRIVATE);
+        totaltime = getSharedPreferences("totaltime", MODE_PRIVATE);
+        currentday = getSharedPreferences("currentday", MODE_PRIVATE);
+        countday = getSharedPreferences("countday", MODE_PRIVATE);
 
-        double currentdaytime = (double) todaytime.getInt("todaytime",0);
+        double currentdaytime = (double) todaytime.getInt("todaytime", 0);
         perday.setText(getshowtime(currentdaytime));
 
-        double titletime = (double) totaltime.getInt("totaltime",0);
-        int numday = countday.getInt("countday",1);
-        aveageday.setText(getshowtime(titletime/numday));
+        double titletime = (double) totaltime.getInt("totaltime", 0);
+        int numday = countday.getInt("countday", 1);
+        aveageday.setText(getshowtime(titletime / numday));
 
 
         timelist = savehistory.readListFromPref(this);
@@ -124,40 +122,40 @@ public class MainActivity extends AppCompatActivity {
         mtitle.setText("Hi " + value + ", you have studied: ");
         timelist = savehistory.readListFromPref(this);
 
-        double currentdaytime = (double) todaytime.getInt("todaytime",0);
+        double currentdaytime = (double) todaytime.getInt("todaytime", 0);
         perday.setText(getshowtime(currentdaytime));
 
-        double titletime = (double) totaltime.getInt("totaltime",0);
-        int numday = countday.getInt("countday",1);
-        aveageday.setText(getshowtime(titletime/numday));
+        double titletime = (double) totaltime.getInt("totaltime", 0);
+        int numday = countday.getInt("countday", 1);
+        aveageday.setText(getshowtime(titletime / numday));
 
-        String datebefore = currentday.getString("currentday","Noday");
+        String datebefore = currentday.getString("currentday", "Noday");
 
-        if(!datebefore.equals("Noday")){
+        if (!datebefore.equals("Noday")) {
             String todaydada = getDate();
-            if(!datebefore.equals(todaydada)) {
+            if (!datebefore.equals(todaydada)) {
                 String thisday = getDate();
                 SharedPreferences.Editor todateeditor = currentday.edit();
-                todateeditor.putString("currentday",thisday);
+                todateeditor.putString("currentday", thisday);
                 todateeditor.commit();
-                Log.e("haha",datebefore);
-                Log.e("haha",getDate());
+                Log.e("haha", datebefore);
+                Log.e("haha", getDate());
 
-                int countdayy = countday.getInt("countday",1);
-                countdayy+=1;
+                int countdayy = countday.getInt("countday", 1);
+                countdayy += 1;
                 SharedPreferences.Editor countdayeditor = countday.edit();
-                countdayeditor.putInt("countday",countdayy);
+                countdayeditor.putInt("countday", countdayy);
                 countdayeditor.commit();
 
                 int outputtime = 0;
                 SharedPreferences.Editor todaytimeeditor = todaytime.edit();
-                todaytimeeditor.putInt("todaytime",outputtime);
+                todaytimeeditor.putInt("todaytime", outputtime);
                 todaytimeeditor.commit();
             }
-        }else{
+        } else {
             String thisday = getDate();
             SharedPreferences.Editor todateeditor = currentday.edit();
-            todateeditor.putString("currentday",thisday);
+            todateeditor.putString("currentday", thisday);
             todateeditor.commit();
         }
     }
@@ -165,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if(preferences.getBoolean("prefer_focus", false) && isstart){
+        if (preferences.getBoolean("prefer_focus", false) && isstart) {
             isstart = false;
             mstart.setText(context.getString(R.string.resume));
             mstart.setTextColor(ContextCompat.getColor(this, R.color.green));
@@ -173,18 +171,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void studyreset(View view)
-    {
+    public void studyreset(View view) {
         AlertDialog.Builder resetAlert = new AlertDialog.Builder(this);
         resetAlert.setTitle("Reset Timer");
         resetAlert.setMessage("Are you sure you want to reset the timer?");
-        resetAlert.setPositiveButton("Reset", new DialogInterface.OnClickListener()
-        {
+        resetAlert.setPositiveButton("Reset", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
-                if(mtimerTask != null)
-                {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (mtimerTask != null) {
                     mtimerTask.cancel();
                     mstart.setText(context.getString(R.string.start));
                     mstart.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.green));
@@ -195,11 +189,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        resetAlert.setNeutralButton("Cancel", new DialogInterface.OnClickListener()
-        {
+        resetAlert.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i)
-            {
+            public void onClick(DialogInterface dialogInterface, int i) {
             }
         });
         resetAlert.show();
@@ -212,34 +204,34 @@ public class MainActivity extends AppCompatActivity {
         dialog.setView(dialogView);
         dialog.show();
         final EditText etName = dialogView.findViewById(R.id.et_name);
-        Button btnLogin =dialogView.findViewById(R.id.btn_save);
-        Button btnCancel =dialogView.findViewById(R.id.btn_cancel);
+        Button btnLogin = dialogView.findViewById(R.id.btn_save);
+        Button btnCancel = dialogView.findViewById(R.id.btn_cancel);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 slotName = etName.getText().toString();
                 if (TextUtils.isEmpty(slotName)) {
                     Toast.makeText(MainActivity.this, "Please enter your slot name", Toast.LENGTH_SHORT).show();
-                }else if (mtimerTask == null){
+                } else if (mtimerTask == null) {
                     Toast.makeText(MainActivity.this, "No time slot to save", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     addhistory();
-                    double currentdaytime = (double) todaytime.getInt("todaytime",0);
+                    double currentdaytime = (double) todaytime.getInt("todaytime", 0);
                     currentdaytime += mtime;
                     perday.setText(getshowtime(currentdaytime));
-                    int outputtime = (int)  currentdaytime;
+                    int outputtime = (int) currentdaytime;
                     SharedPreferences.Editor todaytimeeditor = todaytime.edit();
-                    todaytimeeditor.putInt("todaytime",outputtime);
+                    todaytimeeditor.putInt("todaytime", outputtime);
                     todaytimeeditor.commit();
 
-                    double currenttotaltime = (double) totaltime.getInt("totaltime",0);
+                    double currenttotaltime = (double) totaltime.getInt("totaltime", 0);
                     currenttotaltime += mtime;
-                    int numday = countday.getInt("countday",1);
-                    int resultday = (int) currenttotaltime/numday;
+                    int numday = countday.getInt("countday", 1);
+                    int resultday = (int) currenttotaltime / numday;
                     aveageday.setText(getshowtime(resultday));
-                    int outputtotaltime = (int)  currenttotaltime;
+                    int outputtotaltime = (int) currenttotaltime;
                     SharedPreferences.Editor totaltimeeditor = totaltime.edit();
-                    totaltimeeditor.putInt("totaltime",outputtotaltime);
+                    totaltimeeditor.putInt("totaltime", outputtotaltime);
                     totaltimeeditor.commit();
 
                     mtimerTask.cancel();
@@ -261,9 +253,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addhistory() {
-        Toast.makeText(MainActivity.this,getshowtime(mtime)+" has been added to history",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, getshowtime(mtime) + " has been added to history", Toast.LENGTH_SHORT).show();
 
-        TimerModel timerModel = new TimerModel(getshowtime(mtime),getDate(),mtime,slotName);
+        TimerModel timerModel = new TimerModel(getshowtime(mtime), getDate(), mtime, slotName);
         if (timelist == null)
             timelist = new ArrayList<>();
         timelist.add(timerModel);
@@ -272,17 +264,13 @@ public class MainActivity extends AppCompatActivity {
         adapter.setTaskModelList(timelist);
     }
 
-    public void studystart(View view)
-    {
-        if(isstart)
-        {
+    public void studystart(View view) {
+        if (isstart) {
             isstart = false;
             mstart.setText(context.getString(R.string.resume));
             mstart.setTextColor(ContextCompat.getColor(this, R.color.green));
             mtimerTask.cancel();
-        }
-        else
-        {
+        } else {
             isstart = true;
             mstart.setText(context.getString(R.string.pause));
             mstart.setTextColor(ContextCompat.getColor(this, R.color.red));
@@ -290,34 +278,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void startTimer()
-    {
-        mtimerTask = new TimerTask()
-        {
+    private void startTimer() {
+        mtimerTask = new TimerTask() {
             @Override
-            public void run()
-            {
-                runOnUiThread(new Runnable()
-                {
+            public void run() {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         mtime++;
                         showtime.setText(getshowtime(mtime));
                     }
                 });
             }
         };
-        mtimer.scheduleAtFixedRate(mtimerTask, 0 ,1000);
+        mtimer.scheduleAtFixedRate(mtimerTask, 0, 1000);
     }
-    
-    private String getshowtime(double time)
-    {
+
+    private String getshowtime(double time) {
         int rounded = (int) Math.round(time);
         int seconds = ((rounded % 86400) % 3600) % 60;
         int minutes = ((rounded % 86400) % 3600) / 60;
         int hours = ((rounded % 86400) / 3600);
-        return String.format("%02d",hours) + " : " + String.format("%02d",minutes) + " : " + String.format("%02d",seconds);
+        return String.format("%02d", hours) + " : " + String.format("%02d", minutes) + " : " + String.format("%02d", seconds);
     }
 
     private String getDate() {
