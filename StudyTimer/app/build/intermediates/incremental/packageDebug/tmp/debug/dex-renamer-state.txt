@@ -1,4 +1,0 @@
-#Tue Apr 27 03:23:58 NZST 2021
-base.0=C\:\\Users\\mayif\\Documents\\GitHub\\StudyTimer\\StudyTimer\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
